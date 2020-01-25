@@ -13,8 +13,11 @@ namespace Minesweeper2.Controllers
         {
             return View();
         }
+        [HttpPost]
         public ActionResult Login()
         {
+            SecurityService ss = new SecurityService();
+            SecurityDAO sd = new SecurityDAO();
             return View("Home");
         }
     }
