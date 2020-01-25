@@ -173,8 +173,14 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\LoginView.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
+=======
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\LoginSuccess.cshtml" />
+    <Content Include="Views\Login\LoginFailed.cshtml" />
+>>>>>>> 18603d9d2e422af523d5ec52655fe878aee5e8f3
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
