@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Minesweeper2.Services.Business;
 using Minesweeper2.Services.Data;
+using Minesweeper2.Models;
 
 
 namespace Minesweeper.Controllers
@@ -17,12 +18,19 @@ namespace Minesweeper.Controllers
             return View("Register");
         }//end Index
 
-        [HttpPost]
-        public ActionResult Register()
+        public ActionResult Register(UserModel user)
         {
             SecurityService ss = new SecurityService();
-            SecurityDAO sd = new SecurityDAO();
-            return View("Home");
+            Boolean success = ss.DoRegister(user);
+
+            if (success)
+            {
+                return View("RegisterSuccess", user);
+            }//end if
+            else
+            {
+                return View("RegisterFailed");
+            }//end else
         }//end Register
     }//end class controller
 }//end namespace
