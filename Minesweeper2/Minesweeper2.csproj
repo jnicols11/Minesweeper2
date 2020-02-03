@@ -182,10 +182,12 @@
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Register\RegisterSuccess.cshtml" />
     <Content Include="Views\Register\RegisterFailed.cshtml" />
+    <Content Include="Views\Login\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Game\" />
+    <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

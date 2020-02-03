@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper2.Models
 {
-    public class Board
+    public class BoardModel
     {
 
     }//end Board class

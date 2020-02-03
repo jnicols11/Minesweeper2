@@ -43,6 +43,13 @@ namespace Minesweeper2
                 url: "{Game}",
                 defaults: new { controller = "Game", action = "Index", id = UrlParameter.Optional }
             );
+
+            //Logout URL Route
+            routes.MapRoute(
+                name: "Logout",
+                url: "{Logout}",
+                defaults: new { controller = "Login", action = "Logout", id = UrlParameter.Optional }
+            );
         }
     }
 }

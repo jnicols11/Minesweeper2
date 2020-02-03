@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Logout";
+}
+
+@Session["user"] == null;
+
+<h2>Logout</h2>
+
+<h3>Logout Success</h3>
+
+<div>
+    @Html.ActionLink("Back to home", "Index")
+</div>
+
+

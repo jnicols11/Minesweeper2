@@ -33,5 +33,11 @@ namespace Minesweeper2.Controllers
                 return View("LoginFailed");
             }//end else
         }
+
+        public ActionResult Logout()
+        {
+            Session["user"] = null;
+            return View();
+        }//end Logout
     }
 }
