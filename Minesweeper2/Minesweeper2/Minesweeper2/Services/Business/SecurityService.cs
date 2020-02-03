@@ -15,11 +15,5 @@ namespace Minesweeper2.Services.Business
             SecurityDAO service = new SecurityDAO();
             return service.FindByUser(user);
         }//end Authenticate
-
-        public bool DoRegister(UserModel user)
-        {
-            SecurityDAO service = new SecurityDAO();
-            return service.RegisterData(user);
-        }//end DoRegister
     }//end Security Service
 }//end Namespace
