@@ -35,6 +35,7 @@ namespace Minesweeper2.Services.Data
 
                     if (reader.HasRows)
                         success = true;
+
                     reader.Close();
                 }//end try
                 catch (Exception ex)

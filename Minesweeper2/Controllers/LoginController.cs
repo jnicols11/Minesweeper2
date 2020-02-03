@@ -24,6 +24,8 @@ namespace Minesweeper2.Controllers
 
             if (success)
             {
+                string username = user.Username;
+                Session["user"] = username;
                 return View("LoginSuccess", user);
             }//end if
             else
