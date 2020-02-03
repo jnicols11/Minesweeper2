@@ -3,5 +3,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@if(Session["user"] == null)
+{
+    <h2>Please Register and Log in to play the game</h2>
+}
+
+@if(Session["user"] != null)
+{
+    <h2>Welcome to the game</h2>
+}
 
