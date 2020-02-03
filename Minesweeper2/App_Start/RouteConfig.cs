@@ -13,14 +13,11 @@ namespace Minesweeper2
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            /*
-             * Home Controller Route
-             * Created by default
-             */
+            //Home Page
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Game", action = "Index", id = UrlParameter.Optional }
             );
 
             //Register Controller URL Route

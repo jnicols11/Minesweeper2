@@ -14,7 +14,7 @@ namespace Minesweeper2.Controllers
         // GET: Game
         public ActionResult Index()
         {
-            return View("Game");
+            return View();
         }//end Index
 
         public ActionResult OnButtonClick(GameModel game)
