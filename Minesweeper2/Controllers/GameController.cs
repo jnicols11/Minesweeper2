@@ -17,6 +17,13 @@ namespace Minesweeper2.Controllers
             return View();
         }//end Index
 
+        public ActionResult Play(string diff)
+        {
+            Session["difficulty"] = diff;
+
+            return View("Game");
+        }//end Play
+
         public ActionResult OnButtonClick(GameModel game)
         {
             SecurityService ss = new SecurityService();
