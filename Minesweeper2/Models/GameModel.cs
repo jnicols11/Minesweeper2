@@ -11,7 +11,7 @@ namespace Minesweeper2.Models
         public int Score { get; set; }
         public BoardModel Gameboard { get; set; }
         public int Timer { get; set; }
-        public int Difficulty { get; set; }
+        public string Difficulty { get; set; }
 
     }//end class
 }//end namespace

@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-@using (Html.BeginForm("Game", "Play", FormMethod.Post))
+@using (Html.BeginForm("Play", "Game", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     if (Session["user"] == null)
@@ -36,7 +36,11 @@
 
     if(Session["difficulty"] != null)
     {
-
+        <table>
+            <tr>
+               <td>table test</td>
+            </tr>
+        </table>
     }
 }
 

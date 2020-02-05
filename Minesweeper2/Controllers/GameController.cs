@@ -17,11 +17,12 @@ namespace Minesweeper2.Controllers
             return View();
         }//end Index
 
-        public ActionResult Play(string diff)
+        public ActionResult Play(GameModel game)
         {
+            string diff = game.Difficulty;
             Session["difficulty"] = diff;
 
-            return View("Game");
+            return View("Index");
         }//end Play
 
         public ActionResult OnButtonClick(GameModel game)
