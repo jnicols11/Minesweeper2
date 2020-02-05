@@ -1,15 +1,34 @@
-﻿
+﻿@model Minesweeper2.Models.GameModel
+
 @{
     ViewBag.Title = "Index";
 }
 
-@if(Session["user"] == null)
+@if (Session["user"] == null)
 {
     <h2>Please Register and Log in to play the game</h2>
 }
 
-@if(Session["user"] != null)
+@if (Session["user"] != null)
 {
-    <h2>Welcome to the game</h2>
+
+    <h2>Please select a difficulty and press continue</h2>
+
+    <div class="form-horizontal">
+        @Html.Label("Easy")
+        @Html.RadioButtonFor(GameModel => GameModel.Difficulty, "Easy", new { Checked = "checked" })
+        <br />
+        @Html.Label("Medium")
+        @Html.RadioButtonFor(GameModel => GameModel.Difficulty, "Medium", new { Checked = "checked" })
+        <br />
+        @Html.Label("Hard")
+        @Html.RadioButtonFor(GameModel => GameModel.Difficulty, "Hard", new { Checked = "checked" })
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Continue" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 }
 

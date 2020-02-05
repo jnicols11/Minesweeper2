@@ -7,7 +7,7 @@ namespace Minesweeper2.Models
 {
     public class GameModel
     {
-        //Properties of the game (score, gameboard, timer, difficulty)
+        //Properties of the game
         public int Score { get; set; }
         public BoardModel Gameboard { get; set; }
         public int Timer { get; set; }
