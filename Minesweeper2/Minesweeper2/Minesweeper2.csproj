@@ -180,7 +180,13 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\LoginSuccess.cshtml" />
     <Content Include="Views\Login\LoginFailed.cshtml" />
+<<<<<<< HEAD
 >>>>>>> 18603d9d2e422af523d5ec52655fe878aee5e8f3
+=======
+    <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\Register\RegisterSuccess.cshtml" />
+    <Content Include="Views\Register\RegisterFailed.cshtml" />
+>>>>>>> dc5c30ef1cee2c1b5493af9d32a062e00a7f1266
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
