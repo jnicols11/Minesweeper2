@@ -34,9 +34,9 @@
         </div>
     }
 
-    if(Session["difficulty"] != null)
+    if (Session["difficulty"] != null)
     {
-        using(Html.BeginForm("HandleButtonClick", "Button"))
+        using (Html.BeginForm("HandleButtonClick", "Button"))
         {
             for (int i = 0; i < 50; i++)
             {
@@ -44,16 +44,16 @@
                 {
                     <br />
                 }
-<button type="submit" name="cell" value="@i">
-    @if (i % 2 == 0)
-    {
-    <img src="~/Images/mine.jpg" width="50" height="50"/>
-    }
-    else
-    {
-    <img src="~/Images/flag.jpg" width="50" height="50"/>
-    }
-</button>
+                <button type="submit" name="cell" value="@i">
+                    @if (i % 2 == 0)
+                    {
+                        <img src="~/Images/mine.jpg" width="50" height="50" />
+                    }
+                    else
+                    {
+                        <img src="~/Images/flag.jpg" width="50" height="50" />
+                    }
+                </button>
             }
         }
     }
