@@ -11,26 +11,52 @@ namespace Minesweeper2.Controllers
 {
     public class GameController : Controller
     {
+        static BoardModel theBoard = new BoardModel(10);
+        static GameModel theGame = new GameModel(theBoard);
+
         // GET: Game
         public ActionResult Index()
         {
-            return View();
+            return View(theGame);
         }//end Index
 
-        public ActionResult Play(GameModel game)
+        public ActionResult setDifficulty(string difficulty)
         {
-            string diff = game.Difficulty;
-            Session["difficulty"] = diff;
+            int d;
+            if(difficulty == "Easy")
+            {
+                d = 1;
+            }//end if
+            else if(difficulty == "Medium")
+            {
+                d = 2;
+            }//end else if
+            else
+            {
+                d = 3;
+            }//end else
 
-            return View("Index");
-        }//end Play
+            Session["difficulty"] = difficulty;
+            theBoard.Difficulty = d;
+            theBoard.setupLiveNeighbors();
+            theBoard.calculateLiveNeighbors();
+            return View("Index", theGame);
+        }//end setDifficulty
 
-        public ActionResult OnButtonClick(GameModel game)
+        public ActionResult OnButtonClick(string r, string c)
         {
-            SecurityService ss = new SecurityService();
-            SecurityDAO sd = new SecurityDAO();
+            int row = Int32.Parse(r);
+            int col = Int32.Parse(c);
+            if(theBoard.theGrid[row, col].IsLive)
+            {
+                return View("GameLoss");
+            }//end if
+            else
+            {
+                theBoard.floodFill(row, col);
+            }//end else
 
-            return View("Game");
+            return View("Index", theGame);
         }//end  OnButtonClick
     }//end Controller
 }//end namespace

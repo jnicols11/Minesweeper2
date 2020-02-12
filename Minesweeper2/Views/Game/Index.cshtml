@@ -3,49 +3,60 @@
 @{
     ViewBag.Title = "Index";
 }
-@using (Html.BeginForm("Play", "Game", FormMethod.Post))
+@if (Session["user"] == null)
 {
-    @Html.AntiForgeryToken()
-    if (Session["user"] == null)
+    <h2>Please Register and Log in to play the game</h2>
+}
+
+@if (Session["user"] != null && Session["difficulty"] == null)
+{
+
+    <h2>Please select a difficulty and press continue</h2>
+    using (Html.BeginForm("setDifficulty", Model.Difficulty))
     {
-        <h2>Please Register and Log in to play the game</h2>
-    }
-
-    if (Session["user"] != null && Session["difficulty"] == null)
-    {
-
-        <h2>Please select a difficulty and press continue</h2>
-
         <div class="form-horizontal">
+
             @Html.Label("Easy")
+
             @Html.RadioButtonFor(GameModel => GameModel.Difficulty, "Easy", new { Checked = "checked" })
+
             <br />
+
             @Html.Label("Medium")
+
             @Html.RadioButtonFor(GameModel => GameModel.Difficulty, "Medium", new { Checked = "checked" })
+
             <br />
+
             @Html.Label("Hard")
+
             @Html.RadioButtonFor(GameModel => GameModel.Difficulty, "Hard", new { Checked = "checked" })
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Continue" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
 
-    if (Session["difficulty"] != null)
+                <div class="col-md-offset-2 col-md-10">
+
+                    <input type="submit" value="Continue" class="btn btn-default" />
+
+                </div>
+
+            </div>
+
+        </div>
+
+    }
+}
+
+@if (Session["difficulty"] != null)
+{
+    using (Html.BeginForm("OnButtonClick", "Row", "Col"))
     {
-        using (Html.BeginForm("HandleButtonClick", "Button"))
+        for (int i = 0; i < 10; i++)
         {
-            for (int i = 0; i < 50; i++)
+            for (int c = 0; c < 10; c++)
             {
-                if (i % 5 == 0)
-                {
-                    <br />
-                }
-                <button type="submit" name="cell" value="@i">
-                    @if (i % 2 == 0)
+                <button type="submit" name="cell" value="@i" data-value="@c">
+                    @if (Model.Gameboard.theGrid[i, c].IsLive)
                     {
                         <img src="~/Images/mine.jpg" width="50" height="50" />
                     }
@@ -55,7 +66,10 @@
                     }
                 </button>
             }
+            <br/>
         }
     }
 }
+
+
 

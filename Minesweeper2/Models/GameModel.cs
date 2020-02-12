@@ -12,13 +12,21 @@ namespace Minesweeper2.Models
         public BoardModel Gameboard { get; set; }
         public int Timer { get; set; }
         public string Difficulty { get; set; }
+        public string[] Difficulties = new[] { "Easy", "Medium", "Hard" };
 
-        public GameModel(int score, BoardModel gameboard, int timer, string difficulty)
+        public GameModel(BoardModel gameboard)
         {
-            Score = score;
             Gameboard = gameboard;
-            Timer = timer;
-            Difficulty = difficulty;
+            Score = 0;
+            Timer = 0;
         }//end constructor
+
+        public GameModel()
+        {
+            Score = 0;
+            Gameboard = new BoardModel(10);
+            Timer = 0;
+            Difficulty = "Easy";
+        }//end default constructor
     }//end class
 }//end namespace

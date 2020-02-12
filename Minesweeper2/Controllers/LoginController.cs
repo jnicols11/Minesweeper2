@@ -37,6 +37,7 @@ namespace Minesweeper2.Controllers
         public ActionResult Logout()
         {
             Session["user"] = null;
+            Session["difficulty"] = null;
             return View();
         }//end Logout
     }
