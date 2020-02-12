@@ -1,4 +1,4 @@
-﻿@model Minesweeper2.Models.GameModel
+﻿@model Minesweeper2.Models.BoardModel
 
 @{
     ViewBag.Title = "Index";
@@ -12,61 +12,92 @@
 {
 
     <h2>Please select a difficulty and press continue</h2>
-    using (Html.BeginForm("setDifficulty", Model.Difficulty))
+    <h3>The timer begins when you press continue</h3>
+    using (Html.BeginForm("Play", "Game", FormMethod.Post))
     {
         <div class="form-horizontal">
-
             @Html.Label("Easy")
-
-            @Html.RadioButtonFor(GameModel => GameModel.Difficulty, "Easy", new { Checked = "checked" })
-
+            @Html.RadioButtonFor(BoardModel => BoardModel.Difficulty, "Easy", new { Checked = "checked" })
             <br />
-
             @Html.Label("Medium")
-
-            @Html.RadioButtonFor(GameModel => GameModel.Difficulty, "Medium", new { Checked = "checked" })
-
+            @Html.RadioButtonFor(BoardModel => BoardModel.Difficulty, "Medium", new { Checked = "checked" })
             <br />
-
             @Html.Label("Hard")
-
-            @Html.RadioButtonFor(GameModel => GameModel.Difficulty, "Hard", new { Checked = "checked" })
-
+            @Html.RadioButtonFor(BoardModel => BoardModel.Difficulty, "Hard", new { Checked = "checked" })
             <div class="form-group">
-
                 <div class="col-md-offset-2 col-md-10">
-
                     <input type="submit" value="Continue" class="btn btn-default" />
-
                 </div>
-
             </div>
-
         </div>
-
     }
 }
 
 @if (Session["difficulty"] != null)
 {
-    using (Html.BeginForm("OnButtonClick", "Row", "Col"))
+    using (Html.BeginForm("OnButtonClick", "Game"))
     {
-        for (int i = 0; i < 10; i++)
+        int cntr = 0;
+        foreach (var index in Model.theGrid)
         {
-            for (int c = 0; c < 10; c++)
+            if(cntr % Model.Size == 0)
             {
-                <button type="submit" name="cell" value="@i" data-value="@c">
-                    @if (Model.Gameboard.theGrid[i, c].IsLive)
-                    {
-                        <img src="~/Images/mine.jpg" width="50" height="50" />
+                <br />
+            }
+
+                <button type="submit" name="cell" value="@index.ID">
+                    @if(index.IsVisible){
+                        if (index.IsLive)
+                        {
+                            <img src="~/Images/mine.jpg" width="50" height="50" />
+                        }
+                        else
+                        {
+                            switch (index.liveNeighbors)
+                            {
+                                case 0:
+                                    <img src="~/Images/blank.jpg"/>
+                                    break;
+                                case 1:
+                                    <img src="~/Images/MS1.jpg" width="50" height="50" />
+                                    break;
+
+                                case 2:
+                                    <img src="~/Images/MS2.jpg" width="50" height="50" />
+                                    break;
+
+                                case 3:
+                                    <img src="~/Images/MS3.jpg" width="50" height="50" />
+                                    break;
+
+                                case 4:
+                                    <img src="~/Images/MS4.jpg" width="50" height="50" />
+                                    break;
+
+                                case 5:
+                                    <img src="~/Images/MS5.jpg" width="50" height="50" />
+                                    break;
+
+                                case 6:
+                                    <img src="~/Images/MS6.jpg" width="50" height="50" />
+                                    break;
+
+                                case 7:
+                                    <img src="~/Images/MS7.jpg" width="50" height="50" />
+                                    break;
+
+                                default:
+                                    <img src="~/Images/blank.jpg" width="50" height="50" />
+                                    break;
+                            }
+                        }
                     }
                     else
                     {
-                        <img src="~/Images/flag.jpg" width="50" height="50" />
+                        <img src="~/Images/MSUC.jpg" width="50" height="50" />
                     }
                 </button>
-            }
-            <br/>
+            cntr++;
         }
     }
 }

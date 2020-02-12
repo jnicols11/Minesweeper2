@@ -13,11 +13,13 @@ namespace Minesweeper2.Models
         public bool IsLive { get; set; }
         public bool IsVisible { get; set; }
         public bool isValid { get; set; }
+        public int ID { get; set; }
 
-        public CellModel(int x, int y)
+        public CellModel(int x, int y, int z)
         {
             RowNumber = x;
             ColumnNumber = y;
+            ID = z;
             liveNeighbors = 0;
             IsVisible = false;
         }//end constructor

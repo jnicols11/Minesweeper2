@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Timers;
 
 namespace Minesweeper2.Models
 {
     public class BoardModel
     {
-
         public int Size { get; set; }
         public int Difficulty { get; set; }
         public int liveBombs { get; set; }
+        public Stopwatch timer { get; set; }
+        public double score { get; set; }
+        public bool loss { get; set; }
 
         //2d Array of cells
         public CellModel[,] theGrid { get; set; }
@@ -15,17 +19,21 @@ namespace Minesweeper2.Models
 
         public BoardModel(int s)
         {
+            loss = false;
+            score = 0;
             Size = s;
-
+            timer = new Stopwatch();
             //create 2d array
             theGrid = new CellModel[Size, Size];
+            int z = 0;
 
             for (int i = 0; i < Size; i++)
             {
                 for (int j = 0; j < Size; j++)
                 {
                     //occupy the array
-                    theGrid[i, j] = new CellModel(i, j);
+                    theGrid[i, j] = new CellModel(i, j, z);
+                    z++;
                 }//end nested for loop
             }//end for loop
         }//end constructor
@@ -158,6 +166,8 @@ namespace Minesweeper2.Models
 
         public void floodFill(int r, int c)
         {
+            theGrid[r, c].IsVisible = true;
+
             int[] x = { -1, 1, 0, 0, -1, -1, 1, 1 };
             int[] y = { 0, 0, 1, -1, -1, 1, 1, -1 };
             for (int i = 0; i < 8; i++)

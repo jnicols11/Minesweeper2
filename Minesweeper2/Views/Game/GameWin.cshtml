@@ -1,0 +1,23 @@
+﻿@model Minesweeper2.Models.BoardModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GameWin</title>
+</head>
+<body>
+    <div>
+        <h2>Congratulations you have won the game</h2>
+        <h4>Your time was @Model.timer.Elapsed.Seconds.ToString() seconds</h4>
+        <h6>You scored @Model.score.ToString() points!</h6>
+
+        @Html.ActionLink("Play Again", "Index")
+    </div>
+</body>
+</html>

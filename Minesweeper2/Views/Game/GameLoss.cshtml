@@ -1,0 +1,21 @@
+﻿@model Minesweeper2.Models.BoardModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GameLoss</title>
+</head>
+<body>
+    <div>
+        <h2>You hit a bomb and lost the game</h2>
+        <h4>Your time was @Model.timer.Elapsed.Seconds.ToString() seconds</h4>
+        @Html.ActionLink("Try Again", "Index")
+    </div>
+</body>
+</html>
