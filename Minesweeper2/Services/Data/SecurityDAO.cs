@@ -24,26 +24,27 @@ namespace Minesweeper2.Services.Data
             //create and open the connection in a using block to ensure that all resources will be closed and disposed 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                //create the command and parameter objects
-                SqlCommand command = new SqlCommand(queryString, connection);
-                command.Parameters.Add("@USERNAME", System.Data.SqlDbType.VarChar, 40).Value = user.Username;
-                command.Parameters.Add("@PASSWORD", System.Data.SqlDbType.VarChar, 40).Value = user.Password;
+                    //create the command and parameter objects
+                    SqlCommand command = new SqlCommand(queryString, connection);
+                    command.Parameters.Add("@USERNAME", System.Data.SqlDbType.VarChar, 40).Value = user.Username;
+                    user.encrypt(user.Password);
+                    command.Parameters.Add("@PASSWORD", System.Data.SqlDbType.VarChar, 200).Value = user.Password;
                 try
-                {
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
+                    {
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
 
-                    if (reader.HasRows)
-                        success = true;
+                        if (reader.HasRows)
+                            success = true;
 
-                    reader.Close();
-                }//end try
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }//end catch
-            }//end using block statement
-            return success;
+                        reader.Close();
+                    }//end try
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }//end catch
+                return success;
+            }//end using
         }//end FindByUser
 
         internal bool RegisterData(UserModel user)
@@ -65,6 +66,7 @@ namespace Minesweeper2.Services.Data
                     cmd.Parameters.AddWithValue(@"state", user.State);
                     cmd.Parameters.AddWithValue(@"email", user.Email);
                     cmd.Parameters.AddWithValue(@"username", user.Username);
+                    user.encrypt(user.Password);
                     cmd.Parameters.AddWithValue(@"password", user.Password);
 
                     connection.Open();

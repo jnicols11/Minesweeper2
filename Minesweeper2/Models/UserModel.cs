@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace Minesweeper2.Models
@@ -16,5 +17,31 @@ namespace Minesweeper2.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-    }//end UserModel
-}//end namespace
+        public string encrypt(string str)
+        {
+            string _result = string.Empty;
+            char[] temp = str.ToCharArray();
+            foreach (var _singleChar in temp)
+            {
+                var i = (int)_singleChar;
+                i = i - 2;
+                _result += (char)i;
+            }
+            Password = _result;
+            return _result;
+        }
+        public string decrypt(string str)
+        {
+            string _result = string.Empty;
+            char[] temp = str.ToCharArray();
+            foreach (var _singleChar in temp)
+            {
+                var i = (int)_singleChar;
+                i = i + 2;
+                _result += (char)i;
+            }
+            Password = _result;
+            return _result;
+        }
+    }
+}
