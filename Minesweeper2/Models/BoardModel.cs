@@ -12,6 +12,7 @@ namespace Minesweeper2.Models
         public Stopwatch timer { get; set; }
         public double score { get; set; }
         public bool loss { get; set; }
+        public string Mines { get; set; }
 
         //2d Array of cells
         public CellModel[,] theGrid { get; set; }
@@ -36,6 +37,7 @@ namespace Minesweeper2.Models
                     z++;
                 }//end nested for loop
             }//end for loop
+            Mines = "0";
         }//end constructor
 
         public void setupLiveNeighbors()
@@ -225,5 +227,21 @@ namespace Minesweeper2.Models
                 }//end nested for loop
             }//end for loop
         }//end resetLiveNeighbors
+
+        public void minesRemaining()
+        {
+            int mines = 0;
+            for(int i = 0; i < Size; i++)
+            {
+                for(int j = 0; j < Size; j++)
+                {
+                    if (theGrid[i, j].IsLive && theGrid[i,j].IsVisible == false)
+                    {
+                        mines++;
+                    }//end if
+                }//end nested for loop
+            }//end for loop
+            Mines = mines.ToString();
+        }//end minesRemaining
     }//end board model
 }//end namespace

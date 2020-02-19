@@ -17,8 +17,14 @@ namespace Minesweeper2.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
+        //Code author parmar_punit from https://www.codeproject.com/questions/195713/how-to-encrypt-and-decrypt-password-in-asp-net
         public string encrypt(string str)
         {
+            if(str == null)
+            {
+                return null;
+            }//end if
+
             string _result = string.Empty;
             char[] temp = str.ToCharArray();
             foreach (var _singleChar in temp)
@@ -30,6 +36,8 @@ namespace Minesweeper2.Models
             Password = _result;
             return _result;
         }
+
+        //Code author parmar_punit from https://www.codeproject.com/questions/195713/how-to-encrypt-and-decrypt-password-in-asp-net
         public string decrypt(string str)
         {
             string _result = string.Empty;

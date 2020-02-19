@@ -34,6 +34,7 @@ namespace Minesweeper2.Services.Business
             Board.Difficulty = d;
             Board.setupLiveNeighbors();
             Board.calculateLiveNeighbors();
+            Board.minesRemaining();
             return Board;
         }//end setDifficulty
 
@@ -69,6 +70,7 @@ namespace Minesweeper2.Services.Business
             else
             {
                 Board.floodFill(row, col);
+                Board.minesRemaining();
                 return Board;
             }//end else
         }//end Playgame
