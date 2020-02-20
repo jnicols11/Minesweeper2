@@ -54,6 +54,13 @@ namespace Minesweeper2
                 url: "{Logout}",
                 defaults: new { controller = "Login", action = "Logout", id = UrlParameter.Optional }
             );
+
+            //Logout URL Route
+            routes.MapRoute(
+                name: "Test",
+                url: "{Test}",
+                defaults: new { controller = "Test", action = "Test", id = UrlParameter.Optional }
+            );
         }
     }
 }
