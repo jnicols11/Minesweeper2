@@ -15,29 +15,67 @@
     <h4>Fill out the form to continue</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-    First Name: @Html.TextBoxFor(UserModel => UserModel.FirstName) <p></p>
-    Last Name: @Html.TextBoxFor(UserModel => UserModel.LastName) <p></p>
-    Male: @Html.RadioButtonFor(UserModel => UserModel.Sex, "Male", new { Checked = "checked" })
-    Female: @Html.RadioButtonFor(UserModel => UserModel.Sex, "Female", new { Checked = "checked" })<p></p>
-    <p>  Age: @Html.TextBoxFor(UserModel => UserModel.Age)</p> <p></p>
-    <p>State: @Html.TextBoxFor(UserModel => UserModel.State)</p> <p></p>
-    Email: @Html.TextBoxFor(UserModel => UserModel.Email) <p></p>
-    Username: @Html.TextBoxFor(UserModel => UserModel.Username) <p></p>
-    Password: @Html.TextBoxFor(UserModel => UserModel.Password) <p></p>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Register" class="bg-primary" />
+    <div class="col-md-10">
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(UserModel => UserModel.FirstName, new { htmlAttributes = new { @class = "form-control" } }) <p></p>
         </div>
     </div>
-</div>
-}
+    <div class="col-md-10">
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(UserModel => UserModel.LastName, new { htmlAttributes = new { @class = "form-control" } }) <p></p>
+        </div>
+    </div>
+    <div class="form-group">
+        Male: @Html.RadioButtonFor(UserModel => UserModel.Sex, "Male", new { Checked = "checked" })
+        </div>
+    <div class="form-group">
+        Female: @Html.RadioButtonFor(UserModel => UserModel.Sex, "Female", new { Checked = "checked" })<p></p>
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p>  @Html.EditorFor(UserModel => UserModel.Age, new { htmlAttributes = new { @class = "form-control" } })</p> <p></p>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+                <p> @Html.EditorFor(UserModel => UserModel.State, new { htmlAttributes = new { @class = "form-control" } })</p> <p></p>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(UserModel => UserModel.Email, new { htmlAttributes = new { @class = "form-control" } }) <p></p>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(UserModel => UserModel.Username, new { htmlAttributes = new { @class = "form-control" } }) <p></p>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(UserModel => UserModel.Password, new { htmlAttributes = new { @class = "form-control" } }) <p></p>
+            </div>
+        </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
