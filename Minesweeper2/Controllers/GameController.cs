@@ -29,6 +29,7 @@ namespace Minesweeper2.Controllers
             return View("Index", theBoard);
         }//end setDifficulty
 
+        [HttpPost]
         public ActionResult OnButtonClick(string cell)
         {
             GameService gs = new GameService(theBoard);
@@ -47,7 +48,7 @@ namespace Minesweeper2.Controllers
                 return View("GameWin", theBoard);
             }//end if
 
-            return View("Index", theBoard);
+            return PartialView("_Board", theBoard);
         }//end  OnButtonClick
     }//end Controller
 }//end namespace

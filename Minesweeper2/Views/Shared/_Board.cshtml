@@ -6,7 +6,7 @@
     {
         HttpMethod = "POST",
         InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "gameboard"
+        UpdateTargetId = "boardinfo"
     };
 }
 @if (Session["user"] == null)
@@ -14,9 +14,10 @@
     <h2>Please Register and Log in to play the game</h2>
 }
 
+
 @if (Session["user"] != null && Session["difficulty"] == null)
 {
-
+    /*
     <h2>Please select a difficulty and press continue</h2>
     <h3>The timer begins when you press continue</h3>
     using (Html.BeginForm("Play", "Game", FormMethod.Post))
@@ -37,24 +38,22 @@
             </div>
         </div>
     }
+    */
+    
 }
 
-@if (Session["difficulty"] != null)
-{
-
-    using (Ajax.BeginForm("OnButtonClick", "Game", ajaxOptions, new { id = "index" }))
+<div class="boardinfo">
+    @if (Session["difficulty"] != null)
     {
-
-        <p>Mines Reamaining: </p>@Html.Label(Model.Mines)
-        <br />
-        <p>Time: </p>@Html.Label(Model.timer.Elapsed.Seconds.ToString())
-        <br />
-
-        int cntr = 0;
-        <div id="gameboard">
-            @foreach (var index in Model.theGrid)
+        using (Ajax.BeginForm("OnButtonClick", "Game", ajaxOptions, new { id = "index" }))
+        {
+            <p>Mines Reamaining: </p>@Html.Label(Model.Mines)
+            <br />
+            <p>Time: </p>@Html.Label(Model.timer.Elapsed.Seconds.ToString())
+            <br />
+            int cntr = 0;
+            foreach (var index in Model.theGrid)
             {
-
                 if (cntr % Model.Size == 0)
                 {
                     <br />
@@ -112,16 +111,12 @@
                     {
                         <img src="~/Images/MSUC.jpg" width="50" height="50" />
                     }
-
                 </button>
-
                 cntr++;
-
             }
-        </div>
-
+        }
     }
-}2
+    </div>
 
 
 
