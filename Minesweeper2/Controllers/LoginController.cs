@@ -40,5 +40,5 @@ namespace Minesweeper2.Controllers
             Session["difficulty"] = null;
             return View();
         }//end Logout
-    }
-}
+    }//end Login Controller
+}//end namespace

@@ -45,11 +45,6 @@
     using (Ajax.BeginForm("OnButtonClick", "Game", ajaxOptions, new { id = "index" }))
     {
 
-        <p>Mines Reamaining: </p>@Html.Label(Model.Mines)
-        <br />
-        <p>Time: </p>@Html.Label(Model.timer.Elapsed.Seconds.ToString())
-        <br />
-
         int cntr = 0;
         <div id="gameboard">
             @foreach (var index in Model.theGrid)
@@ -121,7 +116,7 @@
         </div>
 
     }
-}2
+}
 
 
 
