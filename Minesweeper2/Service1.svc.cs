@@ -13,6 +13,6 @@ namespace Minesweeper2
     {
         public void DoWork()
         {
-        }
-    }
-}
+        }//end DoWork
+    }//end Service1
+}//end namespace

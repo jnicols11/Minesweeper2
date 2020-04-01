@@ -13,5 +13,5 @@ namespace Minesweeper2
     {
         [OperationContract]
         void DoWork();
-    }
-}
+    }//end Iservice1 interface
+}//end namespace
