@@ -11,6 +11,16 @@ namespace Minesweeper2
     [ServiceContract]
     public interface IService1
     {
+        /*
+         * Things we need a service for
+         * 
+         * pause and resume game (serialize entire gamestate and save to file)
+         * 
+         * save stats (Create stats model to populate on game completion, serialze, save to file)
+         * 
+         * Show previous stats(deserialize stats JSON and populate into list of stats model to be presented)
+         * 
+         */
         [OperationContract]
         void DoWork();
     }//end Iservice1 interface
