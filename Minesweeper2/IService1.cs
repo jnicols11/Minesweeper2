@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Minesweeper2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace Minesweeper2
@@ -23,6 +25,19 @@ namespace Minesweeper2
          */
 
         [OperationContract]
-        void DoWork();
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Pause/{Userid/")]
+        string Pause(int Userid);
+
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Resume/{Userid/")]
+        BoardModel Resume(int Userid);
+
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Save/{Userid/")]
+        string Save(int Userid);
+
+        [OperationContract]
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Load/")]
+        List<StatsModel> Load();
     }//end Iservice1 interface
 }//end namespace

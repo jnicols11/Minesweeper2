@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Minesweeper2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,9 +12,24 @@ namespace Minesweeper2
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public void DoWork()
+        public List<StatsModel> Load()
         {
+            throw new NotImplementedException();
+        }//end Load
 
-        }//end DoWork
+        public string Pause(int Userid)
+        {
+            throw new NotImplementedException();
+        }//end Pause
+
+        public BoardModel Resume(int Userid)
+        {
+            throw new NotImplementedException();
+        }//end Resume
+
+        public string Save(int Userid)
+        {
+            throw new NotImplementedException();
+        }//end Save
     }//end Service1
 }//end namespace
