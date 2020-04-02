@@ -54,7 +54,7 @@ namespace Minesweeper2
                 url: "{Game}/{Play}",
                 defaults: new { controller = "Game", action = "Play", id = UrlParameter.Optional }
             );
-
+            // 
          
         }
     }
