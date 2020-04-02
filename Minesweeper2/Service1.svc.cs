@@ -27,7 +27,7 @@ namespace Minesweeper2
             throw new NotImplementedException();
         }//end Resume
 
-        public string Save(int Userid)
+        public string Save(StatsModel sm)
         {
             throw new NotImplementedException();
         }//end Save

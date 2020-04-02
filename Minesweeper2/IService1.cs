@@ -33,8 +33,8 @@ namespace Minesweeper2
         BoardModel Resume(int Userid);
 
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Save/{Userid/")]
-        string Save(int Userid);
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Save/")]
+        string Save(StatsModel sm);
 
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Load/")]

@@ -43,6 +43,16 @@ namespace Minesweeper2.Controllers
 
             if (gs.CheckWin()) 
             {
+                //populate Stats model
+                StatsModel sm = new StatsModel(theBoard.timer.Elapsed.Seconds, theBoard.score, Session["user"].ToString());
+
+                //create instance of Rest Service
+                Service1 s1 = new Service1();
+
+                //save json data to file
+                s1.Save(sm);
+
+                //reset sessions and gameboard
                 Session["difficulty"] = null;
                 theBoard.resetLiveNeighbors();
                 return View("GameWin", theBoard);
