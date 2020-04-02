@@ -21,6 +21,7 @@ namespace Minesweeper2
          * Show previous stats(deserialize stats JSON and populate into list of stats model to be presented)
          * 
          */
+
         [OperationContract]
         void DoWork();
     }//end Iservice1 interface
