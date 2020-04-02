@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Runtime.Serialization;
 using System.Timers;
 
 namespace Minesweeper2.Models
 {
+    [DataContract]
     public class BoardModel
     {
         public int Size { get; set; }

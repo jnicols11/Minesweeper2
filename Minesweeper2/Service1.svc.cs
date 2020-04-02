@@ -17,15 +17,15 @@ namespace Minesweeper2
             throw new NotImplementedException();
         }//end Load
 
-        public string Pause(int Userid)
+        public string Pause(string Username)
         {
             throw new NotImplementedException();
-        }//end Pause
+        }
 
-        public BoardModel Resume(int Userid)
+        public BoardModel Resume(string Username)
         {
             throw new NotImplementedException();
-        }//end Resume
+        }
 
         public string Save(StatsModel sm)
         {

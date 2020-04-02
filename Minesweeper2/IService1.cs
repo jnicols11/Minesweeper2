@@ -25,15 +25,15 @@ namespace Minesweeper2
          */
 
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Pause/{Userid/")]
-        string Pause(int Userid);
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Pause/{Username}/")]
+        string Pause(string Username);
 
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Resume/{Userid/")]
-        BoardModel Resume(int Userid);
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Resume/{Username}/")]
+        BoardModel Resume(string Username);
 
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Save/")]
+        [WebInvoke(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Save/")]
         string Save(StatsModel sm);
 
         [OperationContract]
