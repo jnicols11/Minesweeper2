@@ -54,8 +54,25 @@ namespace Minesweeper2
                 url: "{Game}/{Play}",
                 defaults: new { controller = "Game", action = "Play", id = UrlParameter.Optional }
             );
-            // 
-         
-        }
-    }
-}
+<<<<<<< HEAD
+                        //Stats Page Route
+            routes.MapRoute(
+                name: "Stats",
+                url: "{Stats}",
+                defaults: new { controller = "Stats", action = "Index", id = UrlParameter.Optional }
+            );
+        }//end RegisterRoutes
+    }//end class
+}//end namespace
+=======
+
+            //Stats Page Route
+            routes.MapRoute(
+                name: "Stats",
+                url: "{Stats}",
+                defaults: new { controller = "Stats", action = "Index", id = UrlParameter.Optional }
+            );
+        }//end RegisterRoutes
+    }//end class
+}//end namespace
+>>>>>>> 74842bc44df964af66d31fa936b8c47e19b705b7

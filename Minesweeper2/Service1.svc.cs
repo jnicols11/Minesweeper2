@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Web.Script.Serialization;
 
 namespace Minesweeper2
 {
@@ -29,7 +30,7 @@ namespace Minesweeper2
 
         public string Save(StatsModel sm)
         {
-            throw new NotImplementedException();
+            return new JavaScriptSerializer().Serialize(sm);
         }//end Save
     }//end Service1
 }//end namespace
