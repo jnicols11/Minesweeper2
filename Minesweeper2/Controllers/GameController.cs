@@ -5,6 +5,7 @@ using System.Runtime.Caching;
 using System.Timers;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using Minesweeper2.Models;
 using Minesweeper2.Services.Business;
 using Minesweeper2.Services.Data;
@@ -61,18 +62,29 @@ namespace Minesweeper2.Controllers
 
             return PartialView("_Board", theBoard);
         }//end  OnButtonClick
-/*        [HttpGet]
-        public string Pause()
+        [HttpGet]
+        public ActionResult Pause(BoardModel boards)
+        {
+            cachePause(boards);
+            return PartialView("_Board", theBoard);
+        }
+        public string cachePause(BoardModel board)
         {
             var cache = MemoryCache.Default;
 
-            List<BoardModel> board = cache.Get("Board") as List<BoardModel>;
-            if(board == null)
+            BoardModel boards = cache.Get("Board") as BoardModel;
+            if (boards == null)
             {
-                board = new List<BoardModel>();
-
+                board.getTheBoard();
+                var policy = new CacheItemPolicy().AbsoluteExpiration = DateTimeOffset.Now.AddDays(7);
+                cache.Set("Board", board, policy);
             }
-           
-        }//end Pause*/
+            else
+            {
+             board.setTheBoard(boards);
+            }
+            return new JavaScriptSerializer().Serialize(board);
+        }
+        //end Pause
     }//end Controller
 }//end namespace

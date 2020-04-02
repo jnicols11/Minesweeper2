@@ -276,5 +276,9 @@ namespace Minesweeper2.Models
         {
             return this;
         }//end getTheBoard
+        public void setTheBoard(BoardModel board)
+        {
+            this.theGrid = board.theGrid;
+        }// end setTheBoard
     }//end board model
 }//end namespace
