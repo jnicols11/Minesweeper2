@@ -51,7 +51,7 @@ namespace Minesweeper2.Controllers
 
                 //save json data to file
                 s1.Save(sm);
-
+                
                 //reset sessions and gameboard
                 Session["difficulty"] = null;
                 theBoard.resetLiveNeighbors();

@@ -245,5 +245,10 @@ namespace Minesweeper2.Models
             }//end for loop
             Mines = mines.ToString();
         }//end minesRemaining
+
+        public BoardModel getTheBoard()
+        {
+            return this;
+        }//end getTheBoard
     }//end board model
 }//end namespace
