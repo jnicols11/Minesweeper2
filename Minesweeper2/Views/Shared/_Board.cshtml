@@ -42,6 +42,14 @@
     
 }
 
+<div class="pausebutton">
+    @using (Html.BeginForm("Pause", "Game", FormMethod.Post))
+    {
+        @Html.ActionLink("Pause", "Pause");
+    }
+    <br />
+</div>
+
 <div class="boardinfo">
     @if (Session["difficulty"] != null)
     {
@@ -54,7 +62,7 @@
             <p>Pause/Resume: </p>
             using (Html.BeginForm("Pause", "Game", FormMethod.Post))
             {
-            @Html.ActionLink("Pause/Resume", "Pause");
+            @Html.ActionLink("Pause", "Pause");
             }
             <br />
             int cntr = 0;

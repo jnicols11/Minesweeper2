@@ -26,7 +26,7 @@ namespace Minesweeper2.Controllers
 
             //populate list of stats
 
-            return View("Stats", TheStats);
+            return View("Stats");
         }//end Index
     }//end StatsController
 }//end namespace

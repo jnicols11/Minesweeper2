@@ -63,12 +63,14 @@ namespace Minesweeper2.Controllers
 
             return PartialView("_Board", theBoard);
         }//end  OnButtonClick
-        [HttpPost]
-        public ActionResult Pause(BoardModel boards)
+
+        public ActionResult Pause()
         {
+            BoardModel boards = theBoard.getTheBoard();
             cachePause(boards);
             return PartialView("_Board", theBoard);
         }
+
         public string cachePause(BoardModel board)
         {
             var cache = MemoryCache.Default;
@@ -82,7 +84,7 @@ namespace Minesweeper2.Controllers
             }
             else
             {
-             board.setTheBoard(boards);
+                board.setTheBoard(boards);
             }
             return new JavaScriptSerializer().Serialize(board);
         }
