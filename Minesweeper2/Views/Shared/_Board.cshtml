@@ -42,13 +42,7 @@
     
 }
 
-<div class="pausebutton">
-    @using (Html.BeginForm("Pause", "Game", FormMethod.Post))
-    {
-        @Html.ActionLink("Pause", "Pause");
-    }
-    <br />
-</div>
+
 
 <div class="boardinfo">
     @if (Session["difficulty"] != null)

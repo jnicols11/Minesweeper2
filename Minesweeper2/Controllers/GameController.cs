@@ -68,7 +68,7 @@ namespace Minesweeper2.Controllers
         {
             BoardModel boards = theBoard.getTheBoard();
             cachePause(boards);
-            return PartialView("_Board", theBoard);
+            return View("Index", theBoard);
         }
 
         public string cachePause(BoardModel board)
