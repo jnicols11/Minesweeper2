@@ -1,4 +1,6 @@
 ﻿using Minesweeper2.Models;
+using Minesweeper2.Services.Data;
+using Minesweeper2.Services.Utility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +15,19 @@ namespace Minesweeper2
     // NOTE: In order to launch WCF Test Client for testing this service, please select Service1.svc or Service1.svc.cs at the Solution Explorer and start debugging.
     public class Service1 : IService1
     {
-        public List<StatsModel> Load()
+        public StatsDTO GetAllStats()
         {
-            throw new NotImplementedException();
-        }//end Load
+            SecurityDAO sd = new SecurityDAO();
+
+            List<StatsModel> theStats = sd.getAllStats();
+
+            StatsDTO statsDTO = new StatsDTO();
+            statsDTO.theStats = theStats;
+            statsDTO.MessageCode = 1;
+            statsDTO.MessageText = "Stats for all players who have won the game.";
+
+            return statsDTO;
+        }
 
         public string Pause(string Username)
         {
@@ -27,10 +38,6 @@ namespace Minesweeper2
         {
             throw new NotImplementedException();
         }
-
-        public string Save(StatsModel sm)
-        {
-            return new JavaScriptSerializer().Serialize(sm);
-        }//end Save
+        
     }//end Service1
 }//end namespace

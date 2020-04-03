@@ -100,5 +100,14 @@ namespace Minesweeper2.Services.Data
                 }//end nested using
             }//end using
         }//end inputStats
+
+        public List<StatsModel> getAllStats()
+        {
+            List<StatsModel> theStats = new List<StatsModel>();
+
+
+
+            return theStats;
+        }//end getAllStats
     }//end SecurityDAO  
 }//end Namespace

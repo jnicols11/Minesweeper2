@@ -35,6 +35,7 @@ namespace Minesweeper2.Controllers
         [HttpPost]
         public ActionResult OnButtonClick(string cell)
         {
+            theBoard.score++;
             GameService gs = new GameService(theBoard);
             theBoard = gs.Playgame(cell);
             if(theBoard.loss == true)

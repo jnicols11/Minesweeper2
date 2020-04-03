@@ -29,7 +29,7 @@ namespace Minesweeper2.Models
         [Required]
         [DisplayName("score")]
         [DataMember]
-        public double score { get; set; }
+        public int score { get; set; }
         [Required]
         [DisplayName("loss")]
         [DataMember]
