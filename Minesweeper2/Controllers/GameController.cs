@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using Minesweeper2.Models;
 using Minesweeper2.Services.Business;
 using Minesweeper2.Services.Data;
+using Newtonsoft.Json;
 
 namespace Minesweeper2.Controllers
 {

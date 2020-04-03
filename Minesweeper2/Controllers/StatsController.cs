@@ -1,4 +1,5 @@
 ﻿using Minesweeper2.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,18 @@ namespace Minesweeper2.Controllers
 {
     public class StatsController : Controller
     {
+        [JsonProperty("stats")]
+        public List<StatsModel> TheStats { get; set; }
+        public int count { get; set; }
         // GET: Stats
         public ActionResult Index()
         {
-            List<StatsModel> TheStats = new List<StatsModel>();
+            TheStats.Add(new StatsModel(26.54, 120, "infanu"));
+            TheStats.Add(new StatsModel(56.40, 100, "infanu"));
+            TheStats.Add(new StatsModel(36.42, 89, "cyrusd"));
+            TheStats.Add(new StatsModel(72.69, 150, "cyrusd"));
+            
 
-            //deserialize json stats
-            JavaScriptSerializer jss = new JavaScriptSerializer();
 
             //populate list of stats
 

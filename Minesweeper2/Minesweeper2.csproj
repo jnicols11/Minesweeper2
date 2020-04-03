@@ -197,7 +197,6 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="cached.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -316,6 +315,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_Board.cshtml" />
     <Content Include="Views\Stats\Stats.cshtml" />
+    <Content Include="Views\Stats\stats.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
