@@ -62,7 +62,7 @@ namespace Minesweeper2.Controllers
 
             return PartialView("_Board", theBoard);
         }//end  OnButtonClick
-        [HttpGet]
+        [HttpPost]
         public ActionResult Pause(BoardModel boards)
         {
             cachePause(boards);

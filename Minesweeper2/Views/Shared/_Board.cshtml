@@ -52,7 +52,10 @@
             <p>Time: </p>@Html.Label(Model.timer.Elapsed.Seconds.ToString())
             <br />
             <p>Pause/Resume: </p>
-            <input type="submit" value="Pause/Resume" class="btn btn-primary" />
+            using (Html.BeginForm("Pause", "Game", FormMethod.Post))
+            {
+            @Html.ActionLink("Pause/Resume", "Pause");
+            }
             <br />
             int cntr = 0;
             foreach (var index in Model.theGrid)
