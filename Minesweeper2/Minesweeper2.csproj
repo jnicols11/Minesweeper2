@@ -153,6 +153,7 @@
     <Compile Include="Services\Business\SecurityService.cs" />
     <Compile Include="Services\Data\SecurityDAO.cs" />
     <Compile Include="Services\Utility\DTO.cs" />
+    <Compile Include="Services\Utility\StatsDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />

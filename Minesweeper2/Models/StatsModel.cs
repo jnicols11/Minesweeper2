@@ -12,21 +12,12 @@ namespace Minesweeper2.Models
     public class StatsModel
     {
         //initialize differnt stats users can achieve
-        [Required]
-        [DisplayName("Time")]
-        [DefaultValue("")]
         [DataMember]
         public double Time { get; set; }
 
-        [Required]
-        [DisplayName("Score")]
-        [DefaultValue("")]
         [DataMember]
         public double Score { get; set; }
 
-        [Required]
-        [DisplayName("Username")]
-        [DefaultValue("")]
         [DataMember]
         public string Username { get; set; }
 

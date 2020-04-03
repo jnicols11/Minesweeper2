@@ -33,11 +33,7 @@ namespace Minesweeper2
         BoardModel Resume(string Username);
 
         [OperationContract]
-        [WebInvoke(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Save/")]
-        string Save(StatsModel sm);
-
-        [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Load/")]
-        List<StatsModel> Load();
+        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetAllStats/")]
+        StatsDTO GetAllStats();
     }//end Iservice1 interface
 }//end namespace

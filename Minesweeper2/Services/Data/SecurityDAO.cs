@@ -78,5 +78,27 @@ namespace Minesweeper2.Services.Data
                 }//end using
             }//end using
         }//end RegisterData
+
+        public bool inputStats(StatsModel sm)
+        {
+            bool success = false;
+
+            string queryString = "INSERT INTO [dbo].[Stats] ([USERNAME], [SCORE], [TIME]) VALUES ( @username, @score, @time)";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using(SqlCommand cmd = new SqlCommand(queryString, connection))
+                {
+                    cmd.Parameters.AddWithValue(@"username", sm.Username);
+                    cmd.Parameters.AddWithValue(@"score", sm.Score);
+                    cmd.Parameters.AddWithValue(@"time", sm.Time);
+
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    success = true;
+                    return success;
+                }//end nested using
+            }//end using
+        }//end inputStats
     }//end SecurityDAO  
 }//end Namespace
