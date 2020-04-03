@@ -105,9 +105,26 @@ namespace Minesweeper2.Services.Data
         {
             List<StatsModel> theStats = new List<StatsModel>();
 
+            string queryString = "SELECT * FROM [dbo].[Stats]";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(queryString, connection))
+                {
+                    connection.Open();
 
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-            return theStats;
+                    while (reader.HasRows)
+                    {
+                        StatsModel sm = new StatsModel(reader.GetDouble(3), reader.GetDouble(2), reader.GetString(1));
+                        theStats.Add(sm);
+                        reader.NextResult();
+                    }//end while loop
+
+                    return theStats;
+                }//end nested using
+            }//end using
+
         }//end getAllStats
     }//end SecurityDAO  
 }//end Namespace

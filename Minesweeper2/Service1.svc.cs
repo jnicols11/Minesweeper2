@@ -27,17 +27,6 @@ namespace Minesweeper2
             statsDTO.MessageText = "Stats for all players who have won the game.";
 
             return statsDTO;
-        }
-
-        public string Pause(string Username)
-        {
-            throw new NotImplementedException();
-        }
-
-        public BoardModel Resume(string Username)
-        {
-            throw new NotImplementedException();
-        }
-        
+        }//end GetAllStats
     }//end Service1
 }//end namespace

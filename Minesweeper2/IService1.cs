@@ -26,14 +26,6 @@ namespace Minesweeper2
          */
 
         [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Pause/{Username}/")]
-        string Pause(string Username);
-
-        [OperationContract]
-        [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "Resume/{Username}/")]
-        BoardModel Resume(string Username);
-
-        [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json, UriTemplate = "GetAllStats/")]
         StatsDTO GetAllStats();
     }//end Iservice1 interface

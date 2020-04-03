@@ -85,7 +85,7 @@ namespace Minesweeper2.Services.Business
             if (Board.winCondition())
             {
                 StopTimer();
-                Board.score = Double.Parse(Board.timer.ElapsedTicks.ToString());
+                Board.score = Int32.Parse(Board.timer.ElapsedTicks.ToString());
                 Board.resetLiveNeighbors();
                 return true;
             }//end if
