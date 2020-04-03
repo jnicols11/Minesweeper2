@@ -1,4 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Runtime.Serialization;
 using System.Timers;
@@ -8,14 +10,38 @@ namespace Minesweeper2.Models
     [DataContract]
     public class BoardModel
     {
+        [Required]
+        [DisplayName("size")]
+        [DataMember]
         public int Size { get; set; }
+        [Required]
+        [DisplayName("difficulty")]
+        [DataMember]
         public int Difficulty { get; set; }
+        [Required]
+        [DisplayName("liveBombs")]
+        [DataMember]
         public int liveBombs { get; set; }
+        [Required]
+        [DisplayName("timer")]
+        [DataMember]
         public Stopwatch timer { get; set; }
+        [Required]
+        [DisplayName("score")]
+        [DataMember]
         public double score { get; set; }
+        [Required]
+        [DisplayName("loss")]
+        [DataMember]
         public bool loss { get; set; }
+        [Required]
+        [DisplayName("mines")]
+        [DataMember]
         public string Mines { get; set; }
 
+        [Required]
+        [DisplayName("theGrid")]
+        [DataMember]
         //2d Array of cells
         public CellModel[,] theGrid { get; set; }
 
@@ -250,5 +276,9 @@ namespace Minesweeper2.Models
         {
             return this;
         }//end getTheBoard
+        public void setTheBoard(BoardModel board)
+        {
+            this.theGrid = board.theGrid;
+        }// end setTheBoard
     }//end board model
 }//end namespace

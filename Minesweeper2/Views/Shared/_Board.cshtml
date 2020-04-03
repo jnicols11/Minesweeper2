@@ -51,6 +51,12 @@
             <br />
             <p>Time: </p>@Html.Label(Model.timer.Elapsed.Seconds.ToString())
             <br />
+            <p>Pause/Resume: </p>
+            using (Html.BeginForm("Pause", "Game", FormMethod.Post))
+            {
+            @Html.ActionLink("Pause/Resume", "Pause");
+            }
+            <br />
             int cntr = 0;
             foreach (var index in Model.theGrid)
             {
@@ -116,7 +122,7 @@
             }
         }
     }
-    </div>
+</div>
 
 
 

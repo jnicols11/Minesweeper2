@@ -54,7 +54,12 @@ namespace Minesweeper2
                 url: "{Game}/{Play}",
                 defaults: new { controller = "Game", action = "Play", id = UrlParameter.Optional }
             );
-
+            // Game pause route
+            routes.MapRoute(
+          name: "Pause",
+          url: "{Game}/{Pause}",
+          defaults: new { controller = "Game", action = "Pause", id = UrlParameter.Optional }
+      );
             //Stats Page Route
             routes.MapRoute(
                 name: "Stats",
