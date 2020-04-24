@@ -9,12 +9,15 @@ using System.Web.Script.Serialization;
 using Minesweeper2.Models;
 using Minesweeper2.Services.Business;
 using Minesweeper2.Services.Data;
+using Minesweeper2.Services.Utility;
 using Newtonsoft.Json;
 
 namespace Minesweeper2.Controllers
 {
     public class GameController : Controller
     {
+        // get instance of the logger
+        private static MinesweeperLogger logger = MinesweeperLogger.GetInstance();
         static BoardModel theBoard = new BoardModel(10);
 
         // GET: Game
@@ -25,16 +28,19 @@ namespace Minesweeper2.Controllers
 
         public ActionResult Play(string difficulty)
         {
+            MinesweeperLogger.GetInstance().Info("Entering GameController.play()");
             GameService gs = new GameService(theBoard);
             Session["difficulty"] = difficulty;
             theBoard = gs.Setup(difficulty);
             gs.startTimer(theBoard);
+            MinesweeperLogger.GetInstance().Info("Exiting GameController.play()");
             return View("Index", theBoard);
         }//end setDifficulty
 
         [HttpPost]
         public ActionResult OnButtonClick(string cell)
         {
+            MinesweeperLogger.GetInstance().Info("Entering GameController.onButtonClick()");
             theBoard.score++;
             GameService gs = new GameService(theBoard);
             theBoard = gs.Playgame(cell);
@@ -58,6 +64,7 @@ namespace Minesweeper2.Controllers
                 //reset sessions and gameboard
                 Session["difficulty"] = null;
                 theBoard.resetLiveNeighbors();
+                MinesweeperLogger.GetInstance().Info("Exitng GameController.onButtonClick()");
                 return View("GameWin", theBoard);
             }//end if
 
@@ -73,6 +80,7 @@ namespace Minesweeper2.Controllers
 
         public string cachePause(BoardModel board)
         {
+            MinesweeperLogger.GetInstance().Info("Entering GameController.cachePause()");
             var cache = MemoryCache.Default;
 
             BoardModel boards = cache.Get("Board") as BoardModel;
@@ -86,6 +94,7 @@ namespace Minesweeper2.Controllers
             {
                 board.setTheBoard(boards);
             }
+            MinesweeperLogger.GetInstance().Info("Exiting GameController.cachePause()");
             return new JavaScriptSerializer().Serialize(board);
         }
         //end Pause

@@ -1,18 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections
+    .Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using Minesweeper2.Models;
+using Minesweeper2.Services.Utility;
 
 namespace Minesweeper2.Services.Data
 {
     public class SecurityDAO
     {
         string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Minesweeper;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private static MinesweeperLogger logger = MinesweeperLogger.GetInstance();
 
         public bool FindByUser(UserModel user)
         {
+            MinesweeperLogger.GetInstance().Info("Entering SecurityDAO.FindByUser()");
             //Now a SQL query is used to search for a record
 
             //start by assuming that nothing is found
@@ -43,12 +47,14 @@ namespace Minesweeper2.Services.Data
                     {
                         Console.WriteLine(ex.Message);
                     }//end catch
+                MinesweeperLogger.GetInstance().Info("Exiting SecurityDAO.FindByUser()");
                 return success;
             }//end using
         }//end FindByUser
 
         internal bool RegisterData(UserModel user)
         {
+            MinesweeperLogger.GetInstance().Info("Entering SecurityDAO.REgisterData()");
             //start by assuming that nothing is found
             bool success = false;
 
@@ -72,6 +78,7 @@ namespace Minesweeper2.Services.Data
                     connection.Open();
                     cmd.ExecuteNonQuery();
                     success = true;
+                    MinesweeperLogger.GetInstance().Info("Exiting SecurityDAO.REgisterData()");
                     return success;
 
 
@@ -81,6 +88,7 @@ namespace Minesweeper2.Services.Data
 
         public bool inputStats(StatsModel sm)
         {
+            MinesweeperLogger.GetInstance().Info("Entering SecurityDAO.ImputStats()");
             bool success = false;
 
             string queryString = "INSERT INTO [dbo].[Stats] ([USERNAME], [SCORE], [TIME]) VALUES ( @username, @score, @time)";
@@ -96,6 +104,7 @@ namespace Minesweeper2.Services.Data
                     connection.Open();
                     cmd.ExecuteNonQuery();
                     success = true;
+                    MinesweeperLogger.GetInstance().Info("Exiting SecurityDAO.ImputStats()");
                     return success;
                 }//end nested using
             }//end using
@@ -103,6 +112,7 @@ namespace Minesweeper2.Services.Data
 
         public List<StatsModel> getAllStats()
         {
+            MinesweeperLogger.GetInstance().Info("Entering SecurityDAO.getAllStats()");
             List<StatsModel> theStats = new List<StatsModel>();
 
             string queryString = "SELECT * FROM [dbo].[Stats]";
@@ -120,7 +130,7 @@ namespace Minesweeper2.Services.Data
                         theStats.Add(sm);
                         reader.NextResult();
                     }//end while loop
-
+                    MinesweeperLogger.GetInstance().Info("Exiting SecurityDAO.getAllStats()");
                     return theStats;
                 }//end nested using
             }//end using
