@@ -11,11 +11,16 @@ using Minesweeper2.Services.Business;
 using Minesweeper2.Services.Data;
 using Minesweeper2.Services.Utility;
 using Newtonsoft.Json;
+using Unity;
+using Unity.Injection;
 
 namespace Minesweeper2.Controllers
 {
     public class GameController : Controller
     {
+        //Create Unity Container for ioc
+        UnityContainer container = new UnityContainer();
+
         // get instance of the logger
         private static MinesweeperLogger logger = MinesweeperLogger.GetInstance();
         static BoardModel theBoard = new BoardModel(10);
@@ -59,7 +64,6 @@ namespace Minesweeper2.Controllers
                 //populate Stats model
                 StatsModel sm = new StatsModel(theBoard.timer.Elapsed.Seconds, theBoard.score, Session["user"].ToString());
 
-                
                 
                 //reset sessions and gameboard
                 Session["difficulty"] = null;

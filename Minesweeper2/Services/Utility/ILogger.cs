@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bibleapp.Services.Utility
+namespace Minesweeper2.Services.Utility
 {
     interface ILogger
     {

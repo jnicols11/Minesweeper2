@@ -135,9 +135,7 @@ namespace Minesweeper2.Services.Data
                     }//end try
                     catch (Exception e)
                     {
-                        StatsModel sm = new StatsModel(reader.GetDouble(3), reader.GetDouble(2), reader.GetString(1));
-                        theStats.Add(sm);
-                        reader.NextResult();
+                        Console.WriteLine(e.Message);
                     }//end while loop
 
                     return theStats;

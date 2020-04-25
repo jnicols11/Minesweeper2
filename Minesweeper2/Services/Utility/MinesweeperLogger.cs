@@ -1,12 +1,12 @@
-﻿using NLog;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using NLog;
 
 namespace Minesweeper2.Services.Utility
 {
-    public class MinesweeperLogger
+    public class MinesweeperLogger : ILogger
     {
         private static MinesweeperLogger instance; // Singleton Design Pattern
         private static Logger logger; // static variable to hold a single instance of NLogger
