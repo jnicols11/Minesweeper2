@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using Minesweeper2.Models;
 
@@ -104,27 +106,31 @@ namespace Minesweeper2.Services.Data
         public List<StatsModel> getAllStats()
         {
             List<StatsModel> theStats = new List<StatsModel>();
-
             string queryString = "SELECT * FROM [dbo].[Stats]";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand cmd = new SqlCommand(queryString, connection))
+                using (SqlCommand command = new SqlCommand(queryString, connection))
                 {
-                    connection.Open();
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.HasRows)
+                    try
                     {
-                        StatsModel sm = new StatsModel(reader.GetDouble(3), reader.GetDouble(2), reader.GetString(1));
-                        theStats.Add(sm);
-                        reader.NextResult();
-                    }//end while loop
+                        connection.Open();
+                        SqlDataReader reader = command.ExecuteReader();
 
-                    return theStats;
-                }//end nested using
+                        while (reader.Read())
+                        {
+                            StatsModel stat = new StatsModel(reader.GetDouble(3), reader.GetDouble(2), reader.GetString(3));
+                            theStats.Add(stat);
+                        }//end while
+                        connection.Close();
+                    }//end try
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("failed");
+                        Debug.WriteLine(e.Message);
+                    }//end catch
+                }//end using
             }//end using
-
+            return theStats;
         }//end getAllStats
     }//end SecurityDAO  
 }//end Namespace

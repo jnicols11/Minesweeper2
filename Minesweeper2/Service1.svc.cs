@@ -17,11 +17,11 @@ namespace Minesweeper2
     {
         public StatsDTO GetAllStats()
         {
-            SecurityDAO sd = new SecurityDAO();
-
-            List<StatsModel> theStats = sd.getAllStats();
-
             StatsDTO statsDTO = new StatsDTO();
+            List<StatsModel> theStats = new List<StatsModel>();
+            theStats.Add(new StatsModel(45.22, 37.68, "infanu"));
+            theStats.Add(new StatsModel(57.65, 68.34, "cyrusd"));
+
             statsDTO.theStats = theStats;
             statsDTO.MessageCode = 1;
             statsDTO.MessageText = "Stats for all players who have won the game.";
